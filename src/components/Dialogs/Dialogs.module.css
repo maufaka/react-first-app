@@ -1,0 +1,29 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+}
+
+.dialogItems {
+    padding: 10px;
+}
+
+.dialog a {
+    color: white;
+    text-decoration: none;
+}
+
+.dialog a:hover {
+    color: blue;
+}
+
+.active {
+    color: gold;
+}
+
+.dialogMassages {
+    padding: 10px;
+}
+
+.massage {
+
+}

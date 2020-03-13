@@ -1,0 +1,17 @@
+.item {
+  background-color: gray;
+  color: white;
+}
+
+.itemImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+}
+
+.likeImg {
+  width: 15px;
+  height: 15px;
+  float: left;
+  margin: 2px;
+}
