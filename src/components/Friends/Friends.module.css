@@ -1,0 +1,7 @@
+.friends {
+    margin-top: 30px;
+}
+
+.friends > img {
+    width: 35px;
+}

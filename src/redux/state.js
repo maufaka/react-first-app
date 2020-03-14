@@ -12,19 +12,21 @@ let state = {
         dialogs: [
             {id: 1, name: "Andrew"},
             {id: 2, name: "Dimych"},
-            {id: 3, name: "Artem"}
+            {id: 3, name: "Artem"},
+            {id: 3, name: "Valera"}
         ],
         massages: [
             {massage: "Hello, world!"},
             {massage: "Hey"},
-            {massage: "How are you?"}
+            {massage: "How are you?"},
+            {massage: "Hello my friend!"}
         ]
     },
     sidebar: {
         friends: [
             {id:1, name: "Anna"},
             {id:1, name: "Tommy"},
-            {id:1, name: "Anna"}
+            {id:1, name: "Jack"}
         ]
     }
 }
