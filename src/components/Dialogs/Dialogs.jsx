@@ -8,23 +8,23 @@ import Dialog from './DialogItem/DialogItem';
 const Dialogs = (props) => {
 
     let dialogsElement = props.state.dialogs.map( d => <Dialog name={d.name} id={d.id}/> );
-    let massageElement = props.state.massages.map(m => <Massage massage={m.massage}/>)
+    let massageElement = props.state.massages.map(m => <Massage massage={m.massage}/>);
+
+    let newMassageElement = React.createRef();
+    let addMassage = () => {
+        let massage = newMassageElement.current.value;
+        alert(massage);
+    }
 
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogItems}>
                 { dialogsElement }
-                {/* <Dialog name={dialogData[0].name} id={dialogData[0].id}/>
-                <Dialog name={dialogData[1].name} id={dialogData[1].id}/>
-                <Dialog name={dialogData[2].name} id={dialogData[2].id}/>
-                <Dialog name={dialogData[3].name} id={dialogData[3].id}/> */}
             </div>
             <div className={classes.dialogMassages}>
                 {massageElement}
-                {/* <Massage massage={massageData[0].massage}/>
-                <Massage massage={massageData[1].massage} />
-                <Massage massage={massageData[2].massage} />
-                <Massage massage={massageData[3].massage} /> */}
+                <textarea name="" id="" cols="30" rows="5" ref={newMassageElement}></textarea><br/>
+                <button onClick={ addMassage }>Send</button>
             </div>
         </div>
     );

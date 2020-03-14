@@ -2,7 +2,6 @@ import React from "react";
 import classes from './Friends.module.css';
 
 const Friends = (props) => {
-    debugger;
     // let friendsElement = props.state.friends.map( f => <Friends />);
 
     return (

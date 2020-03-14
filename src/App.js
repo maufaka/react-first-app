@@ -8,6 +8,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
+
 import {Route, BrowserRouter} from "react-router-dom";
 
 const App = (props) => {
@@ -23,7 +24,7 @@ const App = (props) => {
           <Route path='/Music/' component={Music} />
           <Route path='/Settings/' component={Settings} /> */}
 
-          <Route path="/Profile/" render={ () => <Profile state={ props.state.profilePage }/> } />
+          <Route path="/Profile/" render={ () => <Profile state={ props.state.profilePage } addPost={props.addPost}/> } />
           <Route path="/Dialogs/" render={ () => <Dialogs state={ props.state.dialogsPage }/> } />
           <Route path="/News/" render={ () => <News /> } />
           <Route path="/Music/" render={ () => <Music /> } />
