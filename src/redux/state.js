@@ -1,3 +1,5 @@
+import {rerenderEtireTree} from './../render'
+
 let state = {
     profilePage: {
         posts : [
@@ -25,7 +27,7 @@ let state = {
     sidebar: {
         friends: [
             {id:1, name: "Anna"},
-            {id:1, name: "Tommy"},
+            {id:1, name: "Tom"},
             {id:1, name: "Jack"}
         ]
     }
@@ -38,6 +40,7 @@ export let addPost = (postMassage) => {
         likesCount: 0
     }
     state.profilePage.posts.push(newPost);
+    rerenderEtireTree (state);
 }
 
 export default state;

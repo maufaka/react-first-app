@@ -16,3 +16,15 @@
 .item .active  {
   color: gold;
 }
+
+.itemFriends {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.itemFriendsHeader {
+  width: 100%;
+  text-align: center;
+  color: white;
+  margin: 20px 0 0 0;
+}

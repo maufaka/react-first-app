@@ -12,11 +12,11 @@ import Friends from "./components/Friends/Friends";
 import {Route, BrowserRouter} from "react-router-dom";
 
 const App = (props) => {
-  return (  
+  return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Navbar state={ props.state.sidebar }/>
+        <Navbar state={ props.state.sidebar } />
         <div className="app-wrapper-content">
           {/* <Route path='/Profile/' component={Profile} />
           <Route path='/Dialogs/' component={Dialogs} />
@@ -24,12 +24,12 @@ const App = (props) => {
           <Route path='/Music/' component={Music} />
           <Route path='/Settings/' component={Settings} /> */}
 
-          <Route path="/Profile/" render={ () => <Profile state={ props.state.profilePage } addPost={props.addPost}/> } />
-          <Route path="/Dialogs/" render={ () => <Dialogs state={ props.state.dialogsPage }/> } />
-          <Route path="/News/" render={ () => <News /> } />
-          <Route path="/Music/" render={ () => <Music /> } />
-          <Route path="/Settings/" render={ () => <Settings /> } />
-          <Route path="/Friends/" render={ () => <Friends state={ props.state.sidebar }/> } />
+          <Route path="/Profile/" render={() => <Profile state={props.state.profilePage} addPost={props.addPost} /> } />
+          <Route path="/Dialogs/" render={() => <Dialogs state={props.state.dialogsPage} />} />
+          <Route path="/News/" render={() => <News />} />
+          <Route path="/Music/" render={() => <Music />} />
+          <Route path="/Settings/" render={() => <Settings />} />
+          <Route path="/Friends/" render={() => <Friends state={props.state.sidebar} />} />
         </div>
       </div>
     </BrowserRouter>
