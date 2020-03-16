@@ -8,7 +8,8 @@ let state = {
             {id: 3, post: "Hello, world!2", likesCount: 10},
             {id: 4, post: "Hello, world!", likesCount: 11},
             {id: 5, post: "It's my first post!", likesCount: 12}
-        ]
+        ],
+        newPostText: "Add new Post!"
     },
     dialogsPage: {
         dialogs: [
@@ -22,7 +23,8 @@ let state = {
             {massage: "Hey"},
             {massage: "How are you?"},
             {massage: "Hello my friend!"}
-        ]
+        ],
+        massageText: "Send new massage"
     },
     sidebar: {
         friends: [
@@ -33,13 +35,31 @@ let state = {
     }
 }
 
-export let addPost = (postMassage) => {
+window.state = state;
+export let addPost = () => {
     let newPost = {
         id: 6,
-        post: postMassage,
+        post: state.profilePage.newPostText,
         likesCount: 0
     }
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
+    rerenderEtireTree (state);
+}
+export let updateNewPost = (newText) => {
+    state.profilePage.newPostText = newText;
+    rerenderEtireTree (state);
+}
+
+export let addMassage = () => {
+    let newMassage = {massage: state.dialogsPage.massageText}
+    state.dialogsPage.massages.push(newMassage);
+    state.dialogsPage.massageText = '';
+    rerenderEtireTree (state);
+}
+
+export let sendNewMassage = (newTextMass) => {
+    state.dialogsPage.massageText = newTextMass;
     rerenderEtireTree (state);
 }
 

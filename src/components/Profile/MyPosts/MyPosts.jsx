@@ -7,16 +7,22 @@ const MyPosts = (props) => {
   let newPostElement = React.createRef();
 
   let addPost = () => {
+    props.addPost();
+  }
+  let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.addPost(text);
-    newPostElement.current.value = '';
+    props.updateNewPost(text);
+    console.log(text); // Проверка state на то что данные отправляются
   }
 
     return (
       <div>
         <h3>my posts</h3>
         <div>
-          <textarea name="" id="" cols="30" rows="5" ref={ newPostElement }></textarea>
+          <textarea cols="30" rows="5" 
+                    ref={ newPostElement } 
+                    value={props.newPostText} 
+                    onChange={onPostChange}/>
         </div>
         <div>
           <button onClick={ addPost } >Add Post</button>
