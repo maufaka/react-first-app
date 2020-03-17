@@ -12,7 +12,7 @@ const MyPosts = (props) => {
   let onPostChange = () => {
     let text = newPostElement.current.value;
     props.updateNewPost(text);
-    console.log(text); // Проверка state на то что данные отправляются
+    //console.log(text); // Проверка state на то что данные отправляются
   }
 
     return (
