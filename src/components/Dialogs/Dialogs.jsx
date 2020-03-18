@@ -12,12 +12,12 @@ const Dialogs = (props) => {
     let newMassageElement = React.createRef();
     let addMassage = () => {
         let massage = newMassageElement.current.value;
-        props.addMassage(massage);
+        props.dispatch({type: 'ADD-MASSAGE', newMassage: massage});
     }
 
     let newMassageSend = () => {
         let massage = newMassageElement.current.value;
-        props.sendNewMassage(massage);
+        props.dispatch({type: 'SEND-NEW-MASSSAGE', newTextMass: massage});
     }
 
     return (
