@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
+const ADD_MASSAGE = 'ADD-MASSAGE';
+const SEND_NEW_MASSAGE = 'SEND-NEW-MASSSAGE';
+
 let store = {
     _state: {
         profilePage: {
@@ -23,7 +28,7 @@ let store = {
                 {massage: "How are you?"},
                 {massage: "Hello my friend!"}
             ],
-            massageText: "Send new massage"
+            massageText: ""
         },
         sidebar: {
             friends: [
@@ -43,7 +48,7 @@ let store = {
         this._callSubscriber = observer;
     },
     dispatch (action) {
-        if (action.type === "ADD-POST") {
+        if (action.type === ADD_POST) {
           let newPost = {
             id: 6,
             post: this._state.profilePage.newPostText,
@@ -52,10 +57,10 @@ let store = {
             this._state.profilePage.posts.push(newPost);
             this._state.profilePage.newPostText = "";
             this._callSubscriber(this._state);
-        } else if (action.type === "UPDATE-NEW-POST") {
+        } else if (action.type === UPDATE_NEW_POST) {
             this._state.profilePage.newPostText = action.newText;
             this._callSubscriber(this._state);
-        } else if (action.type === "ADD-MASSAGE") {
+        } else if (action.type === ADD_MASSAGE) {
             let newMassage = { massage: this._state.dialogsPage.massageText };
             this._state.dialogsPage.massages.push(newMassage);
             this._state.dialogsPage.massageText = "";
@@ -66,5 +71,13 @@ let store = {
         }
     }
 }
+
+export const ADD_POST_ACTION_CREATOR = () => ({type: ADD_POST});
+export const UPDATE_NEW_POST_ACTION_CREATOR = (text) => 
+    ({type: UPDATE_NEW_POST, newText: text });
+export const ADD_MASSAGE_ACTION_CREATOR = () => ({type: ADD_MASSAGE});
+export const SEND_NEW_MASSAGE_ACTION_CREATOR = (massage) => 
+({type: SEND_NEW_MASSAGE, newTextMass: massage});
+
 export default store;
 window.store = store;

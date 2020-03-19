@@ -1,17 +1,18 @@
 import React from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
+import {ADD_POST_ACTION_CREATOR, UPDATE_NEW_POST_ACTION_CREATOR} from '../../../redux/state';
 
 const MyPosts = (props) => {
   let postsElements = props.state.map(p => <Post massage={p.post} likes={p.likesCount} />);
   let newPostElement = React.createRef();
 
   let addPost = () => {
-    props.dispatch({type: 'ADD-POST'});
+    props.dispatch(ADD_POST_ACTION_CREATOR ());
   }
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.dispatch({type: 'UPDATE-NEW-POST', newText: text });
+    props.dispatch(UPDATE_NEW_POST_ACTION_CREATOR (text));
     //console.log(text); // Проверка state на то что данные отправляются
   }
 

@@ -3,6 +3,7 @@ import classes from './Dialogs.module.css'
 import { NavLink } from 'react-router-dom';
 import Massage from './Massage/Massage';
 import Dialog from './DialogItem/DialogItem';
+import {ADD_MASSAGE_ACTION_CREATOR, SEND_NEW_MASSAGE_ACTION_CREATOR} from '../../redux/state';
 
 
 const Dialogs = (props) => {
@@ -11,13 +12,13 @@ const Dialogs = (props) => {
 
     let newMassageElement = React.createRef();
     let addMassage = () => {
-        let massage = newMassageElement.current.value;
-        props.dispatch({type: 'ADD-MASSAGE', newMassage: massage});
+        // let massage = newMassageElement.current.value;
+        props.dispatch(ADD_MASSAGE_ACTION_CREATOR ());
     }
 
     let newMassageSend = () => {
         let massage = newMassageElement.current.value;
-        props.dispatch({type: 'SEND-NEW-MASSSAGE', newTextMass: massage});
+        props.dispatch(SEND_NEW_MASSAGE_ACTION_CREATOR (massage));
     }
 
     return (
@@ -27,9 +28,9 @@ const Dialogs = (props) => {
             </div>
             <div className={classes.dialogMassages}>
                 {massageElement}
-                <textarea   cols="30" rows="5" 
-                            ref={newMassageElement} 
+                <textarea   ref={newMassageElement} 
                             value={props.state.massageText}
+                            placeholder="Enter new massage"
                             onChange={newMassageSend} /><br/>
                 <button onClick={ addMassage }>Send</button>
             </div>
