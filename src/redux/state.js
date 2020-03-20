@@ -1,3 +1,7 @@
+import profileReducer from './profile-reducer';
+import dialogsReducer from './dialogs-reducer';
+import sidebarReducer from './sidebar-reducer';
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
 const ADD_MASSAGE = 'ADD-MASSAGE';
@@ -48,28 +52,12 @@ let store = {
         this._callSubscriber = observer;
     },
     dispatch (action) {
-        if (action.type === ADD_POST) {
-          let newPost = {
-            id: 6,
-            post: this._state.profilePage.newPostText,
-            likesCount: 0
-          };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = "";
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_POST) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        } else if (action.type === ADD_MASSAGE) {
-            let newMassage = { massage: this._state.dialogsPage.massageText };
-            this._state.dialogsPage.massages.push(newMassage);
-            this._state.dialogsPage.massageText = "";
-            this._callSubscriber(this._state);
-        } else if (action.type === 'SEND-NEW-MASSSAGE') {
-            this._state.dialogsPage.massageText = action.newTextMass;
-            this._callSubscriber (this._state);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
+        this._callSubscriber(this._state);
         }
-    }
 }
 
 export const ADD_POST_ACTION_CREATOR = () => ({type: ADD_POST});
