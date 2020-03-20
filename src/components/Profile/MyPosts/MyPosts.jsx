@@ -1,21 +1,18 @@
 import React from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {ADD_POST_ACTION_CREATOR, UPDATE_NEW_POST_ACTION_CREATOR} from '../../../redux/profile-reducer';
 
 const MyPosts = (props) => {
-  let postsElements = props.state.map(p => <Post massage={p.post} likes={p.likesCount} />);
+  let postsElements = props.posts.map(p => <Post massage={p.post} likes={p.likesCount} />);
   let newPostElement = React.createRef();
 
   let addPost = () => {
-    props.dispatch(ADD_POST_ACTION_CREATOR ());
+    props.onAddPost();
   }
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.dispatch(UPDATE_NEW_POST_ACTION_CREATOR (text));
-    //console.log(text); // Проверка state на то что данные отправляются
+    props.onPostChange(text);
   }
-
     return (
       <div>
         <h3>my posts</h3>
