@@ -3,7 +3,7 @@ import classes from './Dialogs.module.css'
 import { NavLink } from 'react-router-dom';
 import Massage from './Massage/Massage';
 import Dialog from './DialogItem/DialogItem';
-import {ADD_MASSAGE_ACTION_CREATOR, SEND_NEW_MASSAGE_ACTION_CREATOR} from '../../redux/state';
+import {ADD_MASSAGE_ACTION_CREATOR, SEND_NEW_MASSAGE_ACTION_CREATOR} from '../../redux/dialogs-reducer';
 
 
 const Dialogs = (props) => {

@@ -1,6 +1,10 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
 
+export const ADD_POST_ACTION_CREATOR = () => ({type: ADD_POST});
+export const UPDATE_NEW_POST_ACTION_CREATOR = (text) => 
+    ({type: UPDATE_NEW_POST, newText: text });
+
 const profileReducer = (state, action) => {
     switch (action.type) {
     case ADD_POST: 

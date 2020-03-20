@@ -2,11 +2,6 @@ import profileReducer from './profile-reducer';
 import dialogsReducer from './dialogs-reducer';
 import sidebarReducer from './sidebar-reducer';
 
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
-const ADD_MASSAGE = 'ADD-MASSAGE';
-const SEND_NEW_MASSAGE = 'SEND-NEW-MASSSAGE';
-
 let store = {
     _state: {
         profilePage: {
@@ -60,12 +55,6 @@ let store = {
         }
 }
 
-export const ADD_POST_ACTION_CREATOR = () => ({type: ADD_POST});
-export const UPDATE_NEW_POST_ACTION_CREATOR = (text) => 
-    ({type: UPDATE_NEW_POST, newText: text });
-export const ADD_MASSAGE_ACTION_CREATOR = () => ({type: ADD_MASSAGE});
-export const SEND_NEW_MASSAGE_ACTION_CREATOR = (massage) => 
-({type: SEND_NEW_MASSAGE, newTextMass: massage});
 
 export default store;
 window.store = store;
