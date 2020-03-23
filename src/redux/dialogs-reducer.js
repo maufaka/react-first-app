@@ -19,14 +19,19 @@ let initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_MASSAGE:
+        case ADD_MASSAGE:{
             let newMassage = { massage: state.massageText };
-            state.massages.push(newMassage);
-            state.massageText = "";
-            return state;
+            let stateCopy = {...state}
+            stateCopy.massages = [...state.massages]
+            stateCopy.massages.push(newMassage);
+            stateCopy.massageText = "";
+            return stateCopy;
+        }
+            
         case SEND_NEW_MASSAGE:
-            state.massageText = action.newTextMass;
-            return state;
+            let stateCopy = {...state}
+            stateCopy.massageText = action.newTextMass;
+            return stateCopy;
         default:
             return state;
       }

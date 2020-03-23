@@ -1,23 +1,20 @@
-import React from 'react';
 import Dialogs from './Dialogs';
 import {ADD_MASSAGE_ACTION_CREATOR, SEND_NEW_MASSAGE_ACTION_CREATOR} from '../../redux/dialogs-reducer';
+import {connect} from 'react-redux';
 
-
-const DialogsContainer = (props) => {
-    let state = props.store.getState();
-    let onAddMassage = () => {
-        props.store.dispatch(ADD_MASSAGE_ACTION_CREATOR ());
+let mapStateToProps = (state) => {
+    return {
+        dialogsPage: state.dialogsPage
     }
-
-    let onNewMassageSend = (massage) => {
-        props.store.dispatch(SEND_NEW_MASSAGE_ACTION_CREATOR (massage));
-    }
-
-    return <Dialogs onAddMassage={onAddMassage}
-                    onNewMassageSend={onNewMassageSend}
-                    dialogs={state.dialogsPage.dialogs}
-                    massages={state.dialogsPage.massages}
-                    massageText={state.dialogsPage.massageText}/>
 }
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        onAddMassage: () => {dispatch(ADD_MASSAGE_ACTION_CREATOR ())},
+        onNewMassageSend: (massage) => {dispatch(SEND_NEW_MASSAGE_ACTION_CREATOR (massage))}
+    }
+}
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps) (Dialogs)
 
 export default DialogsContainer;

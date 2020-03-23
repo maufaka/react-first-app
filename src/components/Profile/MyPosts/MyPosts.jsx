@@ -3,7 +3,7 @@ import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-  let postsElements = props.posts.map(p => <Post massage={p.post} likes={p.likesCount} />);
+  let postsElements = props.profilePage.posts.map(p => <Post massage={p.post} likes={p.likesCount} />);
   let newPostElement = React.createRef();
 
   let addPost = () => {
@@ -19,7 +19,7 @@ const MyPosts = (props) => {
         <div>
           <textarea cols="30" rows="5" 
                     ref={ newPostElement } 
-                    value={props.newPostText} 
+                    value={props.profilePage.newPostText} 
                     onChange={onPostChange}/>
         </div>
         <div>
