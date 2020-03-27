@@ -7,6 +7,7 @@
 .item > a {
   color: white;
   text-decoration: none;
+  margin-top: 15px;
 }
 
 .item > a:hover {
@@ -17,14 +18,16 @@
   color: gold;
 }
 
-.itemFriends {
-  display: flex;
-  flex-wrap: wrap;
+.itemFriend > a {
+  color: white;
+  text-decoration: none;
+  margin-top: 25px;
 }
 
-.itemFriendsHeader {
-  width: 100%;
-  text-align: center;
-  color: white;
-  margin: 20px 0 0 0;
+.itemFriend > a:hover {
+  color: darkslateblue;
+}
+
+.itemFriend .active {
+  color: gold;
 }
