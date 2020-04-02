@@ -4,7 +4,7 @@ import {followAC, unfollowAC, setUsersAC} from './../../redux/users-reducer'
 
 const mapStateToProps = (state) => {
     return {
-        users: state.friendsPage.users
+        users: state.usersPage.users
     }
 }
 
@@ -16,6 +16,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);
+export default connect(mapStateToProps, mapDispatchToProps)(Friends);
 
-export default FriendsContainer;
