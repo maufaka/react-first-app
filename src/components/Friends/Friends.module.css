@@ -1,6 +1,6 @@
 .friends {
     margin-top: 30px;
-    width: 55px;
+    width: 100%;
 }
 
 .friends > img {
@@ -9,4 +9,12 @@
 
 .userPhoto {
     width: 55px;
+}
+
+.selectedPage {
+    font-weight: bold;
+}
+
+.pagination {
+    width: 100%;
 }
