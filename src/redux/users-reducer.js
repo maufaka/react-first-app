@@ -6,12 +6,7 @@ const SET_TOTAL_USERS_COUNT= "SET_TOTAL_USERS_COUNT";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 
 let initialState = {
-    users: [
-        // {id:1, fullname: "Anna T.", followed: true, status: "Hay all!", location: {country: "Russia", city: "Moscow"}, photoURL: "https://cdn3.iconfinder.com/data/icons/fillies-small/64/id-card-512.png"},
-        // {id:2, fullname: "Tommy L.", followed: false, status: "Hay everyone!", location: {country: "USA", city: "New York"}, photoURL: "https://cdn3.iconfinder.com/data/icons/fillies-small/64/id-card-512.png"},
-        // {id:3, fullname: "Jack W.", followed: true, status: "Hay you!", location: {country: "Ukraine", city: "Kiev"}, photoURL: "https://cdn3.iconfinder.com/data/icons/fillies-small/64/id-card-512.png"},
-        // {id:4, fullname: "Dimych K.", followed: false, status: "Hay man!", location: {country: "Belarus", city: "Minsk"}, photoURL: "https://cdn3.iconfinder.com/data/icons/fillies-small/64/id-card-512.png"}
-     ],
+    users: [ ],
      pageSize: 30,
      totalUsersCount: 0,
      currentPage: 1,
@@ -62,11 +57,11 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const followAC = (userId) => ({type: FOLLOW, userId});
-export const unfollowAC = (userId) => ({type: UNFOLLOW, userId});
-export const setUsersAC = (users) => ({type: SET_USERS, users});
-export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
-export const setTotalUsersCountAC = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, totalCount});
-export const toggleIsFetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
+export const follow = (userId) => ({type: FOLLOW, userId});
+export const unfollow = (userId) => ({type: UNFOLLOW, userId});
+export const setUsers = (users) => ({type: SET_USERS, users});
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setTotalUsersCount = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, totalCount});
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
 export default usersReducer;
