@@ -3,6 +3,7 @@ const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT= "SET_TOTAL_USERS_COUNT";
+const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 
 let initialState = {
     users: [
@@ -11,9 +12,10 @@ let initialState = {
         // {id:3, fullname: "Jack W.", followed: true, status: "Hay you!", location: {country: "Ukraine", city: "Kiev"}, photoURL: "https://cdn3.iconfinder.com/data/icons/fillies-small/64/id-card-512.png"},
         // {id:4, fullname: "Dimych K.", followed: false, status: "Hay man!", location: {country: "Belarus", city: "Minsk"}, photoURL: "https://cdn3.iconfinder.com/data/icons/fillies-small/64/id-card-512.png"}
      ],
-     pageSize: 20,
+     pageSize: 30,
      totalUsersCount: 0,
-     currentPage: 1
+     currentPage: 1,
+     isFetching: false
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -51,6 +53,10 @@ const usersReducer = (state = initialState, action) => {
         case SET_TOTAL_USERS_COUNT: {
             return { ...state, totalUsersCount: action.totalCount }
         }
+
+        case TOGGLE_IS_FETCHING: {
+            return { ...state, isFetching: action.isFetching }
+        }
         
         default: return state
     }
@@ -61,5 +67,6 @@ export const unfollowAC = (userId) => ({type: UNFOLLOW, userId});
 export const setUsersAC = (users) => ({type: SET_USERS, users});
 export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setTotalUsersCountAC = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, totalCount});
+export const toggleIsFetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
 export default usersReducer;
