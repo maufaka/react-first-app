@@ -6,3 +6,17 @@
 .header > img {
   height: 60px;
 }
+
+.loginBlock {
+  float: right;
+  padding: 20px;
+}
+
+.loginItem {
+  text-decoration: none;
+  color: white;
+}
+
+.loginItem:hover {
+  color: darkslateblue;
+}

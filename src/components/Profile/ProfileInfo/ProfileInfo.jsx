@@ -1,14 +1,21 @@
 import React from "react";
 import classes from './ProfileInfo.module.css';
+import Preloader from './../../common/preloader/preloader'
+import backgroundFon from '../../../assets/images/background.png'
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+  if(!props.profile) {
+      return <Preloader />
+  }
     return (
       <div className={classes.content}>
         <div className={classes.contentImg}>
-          <img src="https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg" />
+          <img src={backgroundFon} />
         </div>
         <div className={classes.desc}>
-          ava + discription
+          <h2>{props.profile.fullName}</h2>
+          <img src={props.profile.photos.large} alt="logo"/><br />
+          <span>{props.profile.aboutMe}</span>
         </div>
       </div>
     );
