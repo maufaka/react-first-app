@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Friends.module.css';
 import userPhoto from './../../assets/images/user.png'
 import { NavLink } from 'react-router-dom';
+import { followAPI, unfollowAPI } from '../../api/api';
 
 let Friends = (props) => {
 
@@ -25,8 +26,23 @@ let Friends = (props) => {
         </NavLink>
         <span>{u.name}</span> <br/>
          {u.followed 
-        ? <button onClick={() => { props.unfollow(u.id) } }>Unfollow</button> 
-        : <button onClick={() => { props.follow(u.id) } } >Follow</button>}
+        ? <button onClick={() => {
+          unfollowAPI.unfollow(u)
+            .then(data => {
+              if(data.resultCode == 0) {
+                props.unfollow(u.id);
+              }
+            })
+          
+        } }>Unfollow</button> 
+        : <button onClick={() => { 
+          followAPI.follow(u)
+            .then(data => {
+              if(data.resultCode == 0) {
+                props.follow(u.id);
+              }
+            })
+          }} >Follow</button>}
       </div>)}
   </div>)
 }
