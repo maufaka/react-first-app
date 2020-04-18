@@ -13,22 +13,22 @@ export const authMeAPI = {
     return instance.get('auth/me')
       .then(response => {
         return response.data;
-    })
+      })
   }
 }
 
 export const usersAPI = {
   getUsers(currentPage = 1, pageSize = 30) {
     return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-        .then(response => {
-            return response.data;
-        })
+      .then(response => {
+        return response.data;
+      })
   }
 }
 
 export const followAPI = {
-  follow(u) {
-    return instance.post(`follow/${u.id}`)
+  follow(userId) {
+    return instance.post(`follow/${userId}`)
       .then(response => {
         return response.data;
       })
@@ -36,12 +36,20 @@ export const followAPI = {
 }
 
 export const unfollowAPI = {
-  unfollow(u) {
-    return instance.delete(`follow/${u.id}`)
+  unfollow(userId) {
+    return instance.delete(`follow/${userId}`)
       .then(response => {
         return response.data;
       })
   }
 }
 
+export const getProfileAPI = {
+  getProfile(userId) {
+    return instance.get(`profile/` + userId)
+              .then(response => {
+                return response.data;
+              })
+  }
+}
 
