@@ -3,7 +3,6 @@ import classes from './Dialogs.module.css'
 import Massage from './Massage/Massage';
 import Dialog from './DialogItem/DialogItem';
 
-
 const Dialogs = (props) => {
     let dialogsElement = props.dialogsPage.dialogs.map( d => <Dialog name={d.name} id={d.id}/> );
     let massageElement = props.dialogsPage.massages.map(m => <Massage massage={m.massage} />);

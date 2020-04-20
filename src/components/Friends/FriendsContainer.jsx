@@ -12,6 +12,8 @@ import {
 } from './../../redux/users-reducer';
 import Friends from './Friends';
 import Preloader from './../common/preloader/preloader.jsx'
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 class FriendsContainer extends React.Component {
 
@@ -51,14 +53,17 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {
-  follow,
-  unfollow,
-  setUsers,
-  setCurrentPage,
-  setTotalUsersCount,
-  toggleIsFetching,
-  toggleFollowingProgress,
-  getUsers
-})(FriendsContainer);
+export default compose(
+  connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    toggleIsFetching,
+    toggleFollowingProgress,
+    getUsers
+  }),
+  withAuthRedirect
+)(FriendsContainer)
 
