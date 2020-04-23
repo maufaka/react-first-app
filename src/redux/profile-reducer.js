@@ -1,8 +1,8 @@
-import { getProfileAPI } from '../api/api';
-
+import { ProfileAPI } from '../api/api';
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST = 'UPDATE-NEW-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const GET_USER_PROFILE_STATUS = 'GET_USER_PROFILE_STATUS';
 
 let initialState = {
     posts : [
@@ -13,7 +13,8 @@ let initialState = {
         {id: 5, post: "It's my first post!", likesCount: 12}
     ],
     newPostText: "Add new Post!",
-    profile: null
+    profile: null,
+    status: ""
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -42,6 +43,12 @@ const profileReducer = (state = initialState, action) => {
             profile: action.profile
         }
 
+    case GET_USER_PROFILE_STATUS:
+        return {
+            ...state,
+            status: action.status
+        }    
+
     default:
         return state;
     }
@@ -49,6 +56,7 @@ const profileReducer = (state = initialState, action) => {
 export default profileReducer;
 
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
+export const getUserProfileStatus = (status) => ({type: GET_USER_PROFILE_STATUS, status});
 export const ADD_POST_ACTION_CREATOR = () => ({type: ADD_POST});
 export const UPDATE_NEW_POST_ACTION_CREATOR = (text) => 
     ({type: UPDATE_NEW_POST, newText: text });
@@ -56,9 +64,29 @@ export const UPDATE_NEW_POST_ACTION_CREATOR = (text) =>
 
 export const getProfile = (userId) => {
     return (dispatch) => {
-        getProfileAPI.getProfile(userId)
+        ProfileAPI.getProfile(userId)
             .then((response) => {
                 dispatch( setUserProfile(response) );
+        });
+    }
+}
+
+export const getProfileUserStatus = (userId) => {
+    return (dispatch) => {
+        ProfileAPI.getStatus(userId)
+            .then((response) => {
+                dispatch( getUserProfileStatus(response) );
+        });
+    }
+}
+
+export const updateProfileUserStatus = (status) => {
+    return (dispatch) => {
+        ProfileAPI.updateStatus(status)
+            .then((response) => {
+                if (response.data.resultCode === 0) {
+                    dispatch(getUserProfileStatus(status));
+                }
         });
     }
 }
