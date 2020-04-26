@@ -10,8 +10,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    onPostChange: (text) => {dispatch(UPDATE_NEW_POST_ACTION_CREATOR (text))},
-    onAddPost: () => {dispatch(ADD_POST_ACTION_CREATOR ())}
+    onAddPost: (newPostBody) => {dispatch(ADD_POST_ACTION_CREATOR (newPostBody))}
   }
 }
 

@@ -13,8 +13,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        onAddMassage: () => {dispatch(ADD_MASSAGE_ACTION_CREATOR ())},
-        onNewMassageSend: (massage) => {dispatch(SEND_NEW_MASSAGE_ACTION_CREATOR (massage))}
+        onAddMassage: (newMassageBody) => {dispatch(ADD_MASSAGE_ACTION_CREATOR (newMassageBody))}
     }
 }
 

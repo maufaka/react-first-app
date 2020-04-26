@@ -2,18 +2,14 @@ import React from 'react';
 import classes from './Dialogs.module.css'
 import Massage from './Massage/Massage';
 import Dialog from './DialogItem/DialogItem';
+import AddMassageReduxForm from './MassageForm';
 
 const Dialogs = (props) => {
     let dialogsElement = props.dialogsPage.dialogs.map( d => <Dialog name={d.name} id={d.id}/> );
     let massageElement = props.dialogsPage.massages.map(m => <Massage massage={m.massage} />);
 
-    let newMassageElement = React.createRef();
-    let addMassage = () => {
-        props.onAddMassage()
-    }
-    let newMassageSend = () => {
-        let massage = newMassageElement.current.value;
-        props.onNewMassageSend(massage);
+    let addMassage = (value) => {
+        props.onAddMassage(value.newMassageBody)
     }
 
     return (
@@ -23,11 +19,7 @@ const Dialogs = (props) => {
             </div>
             <div className={classes.dialogMassages}>
                 {massageElement}
-                <textarea   ref={newMassageElement} 
-                            value={props.dialogsPage.massageText}
-                            placeholder="Enter new massage"
-                            onChange={newMassageSend} /><br/>
-                <button onClick={ addMassage }>Send</button>
+                <AddMassageReduxForm onSubmit={addMassage}/>
             </div>
         </div>
     );

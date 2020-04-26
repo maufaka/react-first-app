@@ -1,5 +1,4 @@
 const ADD_MASSAGE = 'ADD-MASSAGE';
-const SEND_NEW_MASSAGE = 'SEND-NEW-MASSSAGE';
 
 let initialState = {
     dialogs: [
@@ -13,24 +12,16 @@ let initialState = {
         {massage: "Hey"},
         {massage: "How are you?"},
         {massage: "Hello my friend!"}
-    ],
-    massageText: ""
+    ]
 }
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MASSAGE:
-            let newMassage = { massage: state.massageText };
+            let newMassage = { massage: action.newMassageBody };
             return {
                 ...state,
-                massages: [...state.massages, newMassage],
-                massageText: ''
-            };
-            
-        case SEND_NEW_MASSAGE:            
-            return {
-                ...state,
-                massageText: action.newTextMass
+                massages: [...state.massages, newMassage]
             };
         default:
             return state;
@@ -39,6 +30,4 @@ const dialogsReducer = (state = initialState, action) => {
 
 export default dialogsReducer;
 
-export const ADD_MASSAGE_ACTION_CREATOR = () => ({type: ADD_MASSAGE});
-export const SEND_NEW_MASSAGE_ACTION_CREATOR = (massage) => 
-({type: SEND_NEW_MASSAGE, newTextMass: massage});
+export const ADD_MASSAGE_ACTION_CREATOR = (newMassageBody) => ({type: ADD_MASSAGE, newMassageBody});
