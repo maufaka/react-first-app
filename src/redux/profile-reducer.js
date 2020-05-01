@@ -52,31 +52,27 @@ export const getUserProfileStatus = (status) => ({type: GET_USER_PROFILE_STATUS,
 export const ADD_POST_ACTION_CREATOR = (newPostBody) => ({type: ADD_POST, newPostBody});
 
 
-export const getProfile = (userId) => {
+export const requestProfile = (userId) => {
     return (dispatch) => {
         ProfileAPI.getProfile(userId)
-            .then((response) => {
+            .then(response => {
                 dispatch( setUserProfile(response) );
         });
     }
 }
 
-export const getProfileUserStatus = (userId) => {
-    return (dispatch) => {
+export const getProfileUserStatus = (userId) => (dispatch) => {
         ProfileAPI.getStatus(userId)
-            .then((response) => {
+            .then(response => {
                 dispatch( getUserProfileStatus(response) );
         });
-    }
 }
 
-export const updateProfileUserStatus = (status) => {
-    return (dispatch) => {
+export const updateProfileUserStatus = (status) => (dispatch) => {
         ProfileAPI.updateStatus(status)
             .then((response) => {
                 if (response.data.resultCode === 0) {
                     dispatch(getUserProfileStatus(status));
                 }
         });
-    }
 }

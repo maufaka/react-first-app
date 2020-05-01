@@ -14,11 +14,23 @@ export const authMeAPI = {
       .then(response => {
         return response.data;
       })
+  },
+  login(email, password, rememberMe = false) {
+    return instance.post('auth/login', { email, password, rememberMe })
+      .then(response => {
+        return response.data;
+      })
+  },
+  logout() {
+    return instance.delete('auth/login')
+      .then(response => {
+        return response.data;
+      })
   }
 }
 
 export const usersAPI = {
-  getUsers(currentPage = 1, pageSize = 30) {
+  requestUsers(currentPage = 1, pageSize = 30) {
     return instance.get(`users?page=${currentPage}&count=${pageSize}`)
       .then(response => {
         return response.data;
@@ -52,7 +64,8 @@ export const ProfileAPI = {
               })
   },
   getStatus(userId) {
-    return instance.get(`profile/status`+ userId)
+    return instance.get(`profile/status/`+ userId)
+      .then(response => { return response.data })
   },
   updateStatus(status) {
     return instance.put(`profile/status`, { status: status })

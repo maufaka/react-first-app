@@ -7,7 +7,10 @@ const Header = (props) => {
       <header className={classes.header}>
         <img src="https://seeklogo.net/wp-content/uploads/2017/04/New-Google-Earth-logo.png" />
         <div className={classes.loginBlock}>
-          {props.isAuth ? props.login 
+          {props.isAuth 
+            ? <div>
+                {props.login} <button onClick={props.getAuthUserLogout}>Logout</button>
+              </div>  
             : <NavLink to={'/login'} className={classes.loginItem}>
             Login
           </NavLink>}

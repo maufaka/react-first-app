@@ -1,7 +1,7 @@
 import React from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
-import AddPostReduxForm from './Post/AddPostForm';
+import AddPostReduxForm from './AddPostForm';
 
 const MyPosts = (props) => {
   let postsElements = props.profilePage.posts.map(p => <Post massage={p.post} likes={p.likesCount} />);
