@@ -3,9 +3,8 @@ import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
 import AddPostReduxForm from './AddPostForm';
 
-const MyPosts = (props) => {
-  let postsElements = props.profilePage.posts.map(p => <Post massage={p.post} likes={p.likesCount} />);
-
+const MyPosts = React.memo( props => {
+  let postsElements = props.profilePage.posts.map(p => <Post massage={p.post} likes={p.likesCount} key={p.id} />);
   let addPost = (value) => {
     props.onAddPost(value.newPostBody);
   }
@@ -17,6 +16,6 @@ const MyPosts = (props) => {
         {postsElements}
       </div>
     );
-}
+})
 
 export default MyPosts;

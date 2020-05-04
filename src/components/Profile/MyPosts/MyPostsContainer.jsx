@@ -1,5 +1,5 @@
 import MyPosts from "./MyPosts";
-import {ADD_POST_ACTION_CREATOR, UPDATE_NEW_POST_ACTION_CREATOR} from '../../../redux/profile-reducer';
+import {ADD_POST_ACTION_CREATOR, deletePost} from '../../../redux/profile-reducer';
 import { connect } from "react-redux";
 
 let mapStateToProps = (state) => {
@@ -10,7 +10,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    onAddPost: (newPostBody) => {dispatch(ADD_POST_ACTION_CREATOR (newPostBody))}
+    onAddPost: (newPostBody) => {dispatch(ADD_POST_ACTION_CREATOR (newPostBody))},
+    deletePost: (postId) => {dispatch(deletePost(postId))}
   }
 }
 
