@@ -14,7 +14,9 @@ import Friends from './Friends';
 import Preloader from './../common/preloader/preloader.jsx'
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
-import { getUsers, getPageSize, getTotalUsersCount, getCurrentPage, getFetching, getFollowingInProgress } from '../../redux/users-selectors';
+import {  getUsers,getPageSize, 
+          getTotalUsersCount,getCurrentPage, 
+          getFetching, getFollowingInProgress } from '../../redux/users-selectors';
 
 class FriendsContainer extends React.Component {
 

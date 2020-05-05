@@ -60,27 +60,19 @@ export const ADD_POST_ACTION_CREATOR = (newPostBody) => ({type: ADD_POST, newPos
 export const deletePost = (postId) => ({type: DELETE_POST, postId});
 
 
-export const requestProfile = (userId) => {
-    return (dispatch) => {
-        ProfileAPI.getProfile(userId)
-            .then(response => {
-                dispatch( setUserProfile(response) );
-        });
+export const requestProfile = (userId) => async (dispatch) => {
+    let response = await ProfileAPI.getProfile(userId)
+    dispatch( setUserProfile(response) );
+}
+
+export const getProfileUserStatus = (userId) => async (dispatch) => {
+    let response = await ProfileAPI.getStatus(userId)
+    dispatch( getUserProfileStatus(response) );
+}
+
+export const updateProfileUserStatus = (status) => async (dispatch) => {
+    let response = await ProfileAPI.updateStatus(status)
+    if (response.data.resultCode === 0) {
+        dispatch(getUserProfileStatus(status));
     }
-}
-
-export const getProfileUserStatus = (userId) => (dispatch) => {
-        ProfileAPI.getStatus(userId)
-            .then(response => {
-                dispatch( getUserProfileStatus(response) );
-        });
-}
-
-export const updateProfileUserStatus = (status) => (dispatch) => {
-        ProfileAPI.updateStatus(status)
-            .then((response) => {
-                if (response.data.resultCode === 0) {
-                    dispatch(getUserProfileStatus(status));
-                }
-        });
 }
